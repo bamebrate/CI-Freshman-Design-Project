@@ -1,0 +1,31 @@
+.product-row {
+  width: 80%;
+  margin: 0 auto; 
+  margin-bottom: 40px;
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  }
+  
+.product-card {
+  width: 80px; 
+  text-align: center;
+  padding: 10px;
+  background-color: #e8e8e8;
+  }
+
+.product-img {
+    width: 80%;
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+.slick-prev:before, .slick-next:before {
+    color: black !important;
+}
+
+.show-more {
+  font-size: 40px;
+}

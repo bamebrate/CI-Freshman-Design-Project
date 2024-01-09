@@ -1,0 +1,41 @@
+.user-title {
+    width: 80%;
+    margin: 15 auto;
+    text-align: center;
+    text-decoration: underline;
+    text-decoration-line:underline;
+    text-decoration-color: #5278a7;
+    text-decoration-thickness: 4px;
+  }
+
+  .login {
+      width: 80%;
+      margin: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      text-align: center;
+      padding: 10px;
+      border-style: outset;
+      border-width: 3px;
+      background-color: #f7fbff;
+      padding: 28px;
+
+      position: relative;
+      transition: all .40s;
+      
+  }
+  
+  .login h3{
+      margin-bottom: 7px;
+      text-decoration: underline;
+      text-decoration-color: #8caed6;
+  }
+
+  .login img{
+    margin: 6px;
+  }
+
+  .login h5{
+    text-align: center;
+  }

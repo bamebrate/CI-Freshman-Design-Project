@@ -1,0 +1,116 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    text-decoration: none;
+    list-style: none;
+}
+:root{
+    --bg-color: white;
+    --text-color: black;
+    --main-color: #1663be;
+}
+
+body{
+    height: auto;
+    position: auto;
+    background: var(--bg-color);
+    color: var(--text-color);
+}
+
+header{
+    position: relative;
+    width: 100%;
+    top:0;
+    right:0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: transparent;
+    padding: 28px 12%;
+    transition: all .50s ease;
+}
+
+main {
+   position: relative;
+   height: auto;
+   display: flex;
+   justify-content: center;
+   flex-wrap: wrap;
+}
+
+
+/*style for logo */
+.logo{
+    display: flex;
+    align-items: center;
+}
+
+.logo i{
+    color: var(--main-color);
+    font-size: 28px;
+    margin-right: 3px;
+}
+
+.logo span{
+    color: var(--text-color);
+    font-size: 1.7rem;
+    font-weight: 600;
+}
+
+/* style for nav links */
+.nav-left, .nav-right{ 
+    display:flex;
+}
+
+.nav-right{
+    align-items: center;
+}
+
+.nav-left a, .nav-right a{
+    color: var(--text-color);
+    font-size: 1.1rem;
+    font-weight: 500;
+    transition: all .50 ease;
+}
+
+.nav-left a{
+    padding: 5px 0;
+    margin: 0px 30px;
+}
+
+.nav-right a{
+    margin-right: 25px;
+    margin-left: 10px;
+}
+
+.nav-left a:hover, .nav-right a:hover {
+    color: var(--main-color);
+}
+
+.nav-left a.active, .nav-left a.active{
+    color: var(--main-color);
+}
+
+.user{
+    display: flex;
+    align-items: center;
+}
+
+.user i{
+    color: var(--main-color);
+    font-size: 28px;
+    margin-right: 7px;
+}
+
+#menu-icon{
+    font-size: 35px;
+    color: var(--text-color);
+    cursor: pointer;
+    z-index: 10001;
+    display: none;
+}

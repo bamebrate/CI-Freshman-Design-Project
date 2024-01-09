@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="productUpload.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+     
+    <link rel="stylesheet"
+    href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+
+    <title>Document</title>
+
+    <header>
+      <a href="#" class="logo"><i class='bx bx-baguette'><span>DrexelShare</span></i></a>
+
+      <ul class="navbar">
+          <li><a href='index.html' class="active">Home</a></li>
+          <li><a href='colleges.html'>College</a></li>
+          <li><a href='subjects.html'>Subject</a></li>
+          <li><a href='catalog.html'>Catalog</a></li>
+  <li><a href='about.html'>About</a></li>
+      </ul>
+
+      <div class="main">
+  <a href='cart.html' class="cart"><i class='bx bx-cart'></i></a>
+          <a href="search.html" class="search"><i class='bx bx-search-alt-2' ></i>Search</a>
+          <a href="profile.html" class="user"><i class='bx bx-user-circle'></i>Profile</a>
+  
+      </div>
+</header>
+</head>
+<body>
+    <form id="productForm">
+        <div>
+          <label for="name">Product Name:</label>
+          <input type="text" id="name" name="name" required>
+        </div>
+        <div>
+          <label for="description">Product Description:</label>
+          <textarea id="description" name="description" required></textarea>
+        </div>
+        <div>
+          <label for="price">Product Price:</label>
+          <input type="number" id="price" name="price" step="0.01" required>
+        </div>
+        <div>
+          <label for="image">Product Image:</label>
+          <input type="file" id="image" name="image" accept="image/*" required>
+        </div>
+        <button type="submit">Upload Product</button>
+      </form>
+</body>
+
+<footer class = "footer">
+  <div class="container">
+      <div class = "row">
+          <div class = "footer-col">
+              <h4>Company</h4>
+              <ul>
+                  <li><a href = "about.html">About Us</a></li>
+                  <li><a href = "#">Our Services</a></li>
+                  <li><a href = "#">Privacy Policy</a></li>
+              </ul>
+          </div>
+          <div class = "footer-col">
+              <h4>Get Help</h4>
+              <ul>
+                  <li><a href = "#">FAQ</a></li>
+                  <li><a href = "#">Shipping</a></li>
+                  <li><a href = "#">Returns</a></li>
+              </ul>
+          </div>
+          <div class = "footer-col">
+              <h4>Follow Us</h4>
+              <div class = "social-media" >
+                  <a href = "#"> <i class="fab fa-facebook-f"></i></a>
+                  <a href = "#"> <i class="fab fa-twitter"></i></a>
+                  <a href = "#"> <i class="fab fa-instagram"></i></a>
+                  <a href = "#"> <i class="fab fa-linkedin-in"></i></a>
+              </div>
+          </div>
+      </div>
+  </div>
+</footer>
+
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-app.js";
+  import { getDatabase, set, ref, update } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-database.js";
+
+  import "https://www.gstatic.com/firebasejs/9.0.2/firebase-app.js"
+  import "https://www.gstatic.com/firebasejs/9.0.2/firebase-storage.js"
+
+// Initialize Firebase
+const firebaseConfig = {
+  apiKey: "AIzaSyC7xZ2bWR1AipLY7Ea8fa4OmvuNitjZzUg",
+  authDomain: "fir-9-dojo-f723e.firebaseapp.com",
+  projectId: "fir-9-dojo-f723e",
+  storageBucket: "fir-9-dojo-f723e.appspot.com",
+  messagingSenderId: "343834651424",
+  appId: "1:343834651424:web:06e7b800061b2c5fdc8545"
+};
+const app = initializeApp(firebaseConfig);
+
+// Get a reference to the Firebase storage service
+var storageRef = firebase.storage().ref();
+
+// Get a reference to the product form and listen for submission
+var productForm = document.getElementById("productForm");
+productForm.addEventListener("submit", function(event) {
+  event.preventDefault(); // prevent form from submitting normally
+
+  // Get the input fields from the form
+  var name = document.getElementById("name").value;
+  var description = document.getElementById("description").value;
+  var price = document.getElementById("price").value;
+  var image = document.getElementById("image").files[0]; // get the first file from the file input
+
+  // Create a new product object with the input values
+  var product = {
+    name: name,
+    description: description,
+    price: price
+  };
+
+  // Upload the image to Firebase storage
+  var imageRef = storageRef.child("product-images/" + image.name); // create a reference to the image file in storage
+  imageRef.put(image).then(function(snapshot) {
+    console.log("Image uploaded successfully");
+    product.imageURL = snapshot.downloadURL; // add the image URL to the product object
+
+    // Save the product data to Firebase database
+    firebase.database().ref("products").push(product).then(function() {
+      console.log("Product saved successfully");
+      // Reset the form after successful submission
+      productForm.reset();
+    }).catch(function(error) {
+      console.error("Error saving product to database:", error);
+    });
+  }).catch(function(error) {
+    console.error("Error uploading image to storage:", error);
+  });
+});
+
+</script>

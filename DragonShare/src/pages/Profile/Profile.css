@@ -1,0 +1,45 @@
+.profile-container {
+    display: flex;
+    flex-direction: column;
+    width: 700px;
+    text-align: center;
+
+}
+
+.card {
+    background-color: #f9f9f9;
+    border: 1px solid #1663be;
+    border-radius: 5px;
+    box-shadow: 0 2px 2px rgba(0,0,0,0.3);
+    padding: 40px;
+    margin: 30px;
+}
+
+.card h2 {
+    margin-top: 0;
+}
+
+.card p {
+    margin-bottom: 0;
+}
+
+.card-section {
+    margin: 1px;
+    vertical-align: top;
+    
+    display: flex;
+    justify-content: center;
+    flex-direction: column; 
+}
+.redirect {
+    width: 200px;
+    height: 30px;
+}
+
+#logout {
+    font-size: 24px;
+    width: 300px;
+    height: 50px;
+    background-color: #1663be;
+}
+

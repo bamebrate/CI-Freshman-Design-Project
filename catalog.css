@@ -1,0 +1,54 @@
+.container{
+    max-width: 1170px;
+    margin: auto;
+}
+
+.row{
+    display:flex;
+    flex-wrap: wrap;
+}
+
+ul{
+    list-style: none;
+}
+
+
+.side {
+    float: left;
+    width: 18%;
+  
+    height: 900px;
+    background-color: #e2e1e8;
+}
+  
+.list {
+    float: left;
+    width: 82%;
+  
+    height: 900px;
+    background-color: #ffffff;
+}
+  
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.product-row {
+    text-align: center;
+}
+
+.card {
+    background-color: rgb(145, 185, 200);
+    float: left;
+    padding: 15px;
+    width: 200px;
+    margin: 10px;
+    border: 2px solid #80a1be;
+}
+    
+.fakeimg {
+    width: 75%;
+    height: 50%
+}
